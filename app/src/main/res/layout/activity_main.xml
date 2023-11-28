@@ -7,6 +7,21 @@
     android:backgroundTint="@color/green"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/log_in"
+        android:layout_width="185dp"
+        android:layout_height="61dp"
+        android:backgroundTint="@color/green"
+        android:onClick="switchToSecondActivity"
+        android:text="Log in"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.749" />
+
     <TextView
         android:id="@+id/Login"
         android:layout_width="wrap_content"
@@ -84,6 +99,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.901" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
