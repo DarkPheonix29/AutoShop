@@ -24,6 +24,9 @@
         <activity android:name=".Register_screen">
             <!-- Intent filters go here if needed -->
         </activity>
+        <activity android:name=".ProductScreen">
+
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

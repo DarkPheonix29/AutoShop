@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToSecondActivity(View view) {
-        Intent intent = new Intent(this, Register_screen.class);
+        Intent intent = new Intent(this, ProductScreen.class);
         startActivity(intent);
     }
 }
