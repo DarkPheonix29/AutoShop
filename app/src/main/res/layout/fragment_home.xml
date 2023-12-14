@@ -19,4 +19,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="390dp"
+        android:layout_height="347dp"
+        android:fillViewport="false"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ons automatisch winkelwagentje is onderdeel van hoe de supermarkt in de toekomst eruit gaat zien. Bij het gebruik van onze app kunt u producten van te voren selecteren en overzetten, via het scannen van de qr code op het winkelwagentje. Dit is natuurlijk niet de enige optie, want je kan namelijk ook via het winkelwagentje zelf werken. Het winkelwagentje rijdt zelf naar de producten toe, zodat jij deze niet meer hoeft te duwen.
+            \n\nWaarom hebben wij dit gemaakt?
+            Wij hebben aan dit project gewerkt om mensen die slecht te voet zijn uit te helpen, maar kan natuurlijk door iedereen gebruikt worden.
+            \n\nWij hopen dat jullie goed gebruik maken van onze creatie en wensen jullie veel shopping plezier."
+            android:textSize="20sp">
+
+        </TextView>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="373dp"
+        android:layout_height="205dp"
+        android:src="@drawable/ai_smart_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
