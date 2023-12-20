@@ -7,7 +7,7 @@ public class Customers {
 
     // string variables for our name and job
     private String email;
-    private String password;
+//    private String password;
 
     private String adress;
 
@@ -23,11 +23,11 @@ public class Customers {
 
     private String birthday;
 
-    private Date register_date;
+//    private Date register_date;
 
-    public Customers(String email, String password, String adress, String country, String postalcode, String gender, String first_name, String last_name, String birthday, Date register_date) {
+    public Customers(String email, String adress, String country, String postalcode, String gender, String first_name, String last_name, String birthday) {
         this.email = email;
-        this.password = password;
+//        this.password = password;
         this.adress = adress;
         this.country = country;
         this.postalcode = postalcode;
@@ -35,7 +35,7 @@ public class Customers {
         this.first_name = first_name;
         this.last_name = last_name;
         this.birthday = birthday;
-        this.register_date = register_date;
+//        this.register_date = register_date;
     }
 
     public String getEmail() {
@@ -46,13 +46,13 @@ public class Customers {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public String getAdress() {
         return adress;
@@ -109,13 +109,13 @@ public class Customers {
     public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
-    public Date getRegister_date() {
-        return register_date;
-    }
-
-    public void setRegister_date(Date registerDate) {
-        this.register_date = registerDate;
-    }
+//    public Date getRegister_date() {
+//        return register_date;
+//    }
+//
+//    public void setRegister_date(Date registerDate) {
+//        this.register_date = registerDate;
+//    }
 }
 
 

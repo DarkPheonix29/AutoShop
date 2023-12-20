@@ -85,13 +85,11 @@ public class Register_screen extends AppCompatActivity {
         // below line is for displaying our progress bar.
         loadingPB.setVisibility(View.VISIBLE);
 
-        LocalDate currentDate = LocalDate.now();
-        Date register_date = Date.from(currentDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.160.50:8080/api/")
+                .baseUrl("http://192.168.160.50:8080/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -101,13 +99,16 @@ public class Register_screen extends AppCompatActivity {
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
 
         // passing data from our text fields to our modal class.
-        Customers model = new Customers(email, password, adress, country, postalcode, gender, first_name, last_name, birthday, register_date);
+        Customers customersModel = new Customers(email, adress, country, postalcode, gender, first_name, last_name, birthday);
+        Call<Customers> customersCall = retrofitAPI.createPost(customersModel);
 
+        Credentials credentialsModel = new Credentials(email, password);
+        Call<Credentials> credentialsCall = retrofitAPI.createPost(credentialsModel);
         // calling a method to create a post and passing our modal class.
-        Call<Customers> call = retrofitAPI.createPost(model);
+
 
         // on below line we are executing our method.
-        call.enqueue(new Callback<Customers>() {
+        customersCall.enqueue(new Callback<Customers>() {
             @Override
             public void onResponse(Call<Customers> call, Response<Customers> response) {
                 // this method is called when we get a response from our API.
@@ -131,7 +132,7 @@ public class Register_screen extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Customers responseFromAPI = response.body();
                     // on below line we are getting our data from model class and adding it to our string.
-                    String responseString = "Response Code : " + response.code() + "\nEmail : " + responseFromAPI.getEmail() + "\n" + "Password : " + responseFromAPI.getPassword() + "\n" + "Adress : " + responseFromAPI.getAdress() + "\n" + "Country : " + responseFromAPI.getCountry() + "\n" + "Postal Code : " + responseFromAPI.getPostalcode();
+                    String responseString = "Response Code : " + response.code() + "\nEmail : " + responseFromAPI.getEmail() + "\n" + "Adress : " + responseFromAPI.getAdress() + "\n" + "Country : " + responseFromAPI.getCountry() + "\n" + "Postal Code : " + responseFromAPI.getPostalcode();
 
                     // below line we are setting our
                     // string to our text view.
@@ -145,8 +146,50 @@ public class Register_screen extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onFailure(Call<Customers> call, Throwable t) {
+                // setting text to our text view when
+                // we get an error response from API.
+                responseTV.setText("Error found is : " + t.getMessage());
+            }
+        });
+
+        credentialsCall.enqueue(new Callback<Credentials>() {
+            @Override
+            public void onResponse(Call<Credentials> call, Response<Credentials> response) {
+                // this method is called when we get a response from our API.
+                Toast.makeText(Register_screen.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                // below line is for hiding our progress bar.
+                loadingPB.setVisibility(View.GONE);
+
+                // on below line we are setting empty text
+                // to our both edit text.
+                emailEdt.setText("");
+                passEdt.setText("");
+
+
+                if (response.isSuccessful()) {
+                    Credentials responseFromAPI = response.body();
+                    // on below line we are getting our data from model class and adding it to our string.
+                    String responseString = "Response Code : " + response.code() + "\nEmail : " + responseFromAPI.getEmail();
+
+                    // below line we are setting our
+                    // string to our text view.
+                    responseTV.setText(responseString);
+
+                    // Switch to MainActivity
+                    switchToMainActivity(null);
+                } else {
+                    // Handle unsuccessful response
+                    Toast.makeText(Register_screen.this, "Error: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<Credentials> call, Throwable t) {
                 // setting text to our text view when
                 // we get an error response from API.
                 responseTV.setText("Error found is : " + t.getMessage());

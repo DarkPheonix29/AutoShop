@@ -183,16 +183,16 @@
 
     <EditText
         android:id="@+id/lastname_register"
-        android:layout_width="126dp"
-        android:layout_height="39dp"
+        android:layout_width="129dp"
+        android:layout_height="41dp"
         android:ems="10"
         android:inputType="textPostalAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintHorizontal_bias="0.865"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintVertical_bias="0.166" />
 
     <TextView
         android:id="@+id/textView6"
