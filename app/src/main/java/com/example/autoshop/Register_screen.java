@@ -112,7 +112,7 @@ public class Register_screen extends AppCompatActivity {
             @Override
             public void onResponse(Call<Customers> call, Response<Customers> response) {
                 // this method is called when we get a response from our API.
-                Toast.makeText(Register_screen.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register_screen.this, "Account created", Toast.LENGTH_SHORT).show();
 
                 // below line is for hiding our progress bar.
                 loadingPB.setVisibility(View.GONE);
