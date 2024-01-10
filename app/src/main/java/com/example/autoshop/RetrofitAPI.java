@@ -1,4 +1,6 @@
 package com.example.autoshop;
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -15,6 +17,11 @@ public interface RetrofitAPI {
     @GET("api/credentials/{email}&{password}")
 
     public Call<CredentialsResult> getCredentialsData(@Path("email") String email, @Path("password") String password);
+
+    @GET("api/products")
+
+    Call<ArrayList<Products>> getProductsData();
+
 
 
     @POST("api/customers")
