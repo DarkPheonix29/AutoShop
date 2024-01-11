@@ -45,6 +45,8 @@ public class DashboardFragment extends Fragment {
     MyAdapter myAdapter;
     RecyclerView recyclerView;
 
+    private ShoppingCart shoppingCart;
+
     ArrayList<Products> products;
 
 
@@ -56,8 +58,10 @@ public class DashboardFragment extends Fragment {
         // Initialize the products list
         products = new ArrayList<>();
 
+        shoppingCart = new ShoppingCart();
+
         // Initialize the adapter after initializing the products list
-        myAdapter = new MyAdapter(requireContext(), products);
+        myAdapter = new MyAdapter(requireContext(), products, shoppingCart);
 
 
         // Set up the RecyclerView after initializing the adapter
