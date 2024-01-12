@@ -35,15 +35,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView itemName;
+        private TextView itemName, itemPrice;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.cartItemName);
+            itemPrice = itemView.findViewById(R.id.cartItemPrice);
         }
 
         public void bind(Products product) {
-            itemName.setText(product.getName());
+            itemName.setText(String.valueOf(product.getName()));
+            itemPrice.setText(String.valueOf(product.getPrice()));
             // You can bind other details like price, quantity, etc.
         }
     }

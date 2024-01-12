@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:id="@+id/cartimageview"
+        android:visibility="visible"
         />
 
     <TextView
@@ -20,6 +22,7 @@
         android:textColor="@color/green"
         android:textSize="20dp"
         android:text="Name"
+        android:visibility="visible"
 
         />
 
@@ -31,6 +34,7 @@
         android:layout_below="@id/cartItemName"
         android:textColor="@color/green"
         android:text="0,00"
+        android:visibility="visible"
         />
 
     <LinearLayout
@@ -39,6 +43,7 @@
         android:layout_below="@id/cartimageview"
         android:layout_marginTop="10dp"
         android:background="#DAD8D8"
+        android:visibility="visible"
         />
 
 </RelativeLayout>

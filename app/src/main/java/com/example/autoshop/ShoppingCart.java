@@ -30,19 +30,30 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_shopping);
 
+        Log.d("ShoppingCart", "Activity created");
+
+        // Initialize the recyclerView
         recyclerView = findViewById(R.id.cartRecyclerView);
 
-        // Ensure the cartAdapter is instantiated and set to recyclerView
-        cartAdapter = new CartAdapter(cartItems);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(cartAdapter);
+        if (recyclerView != null) {
+            // Initialize cartAdapter
+            cartAdapter = new CartAdapter(cartItems);
+
+            // Set the adapter to recyclerView
+            recyclerView.setAdapter(cartAdapter);
+
+            // Set the layout manager
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+            Log.d("ShoppingCart", "RecyclerView and Adapter initialized");
+        } else {
+            Log.e("ShoppingCart", "RecyclerView is null");
+        }
 
         // Rest of your code...
     }
 
     // ... Other methods in your ShoppingCart activity
-
-
 
     public void addItemToCart(Products product) {
         // Add a log statement to check if addItemToCart is being called
@@ -60,13 +71,12 @@ public class ShoppingCart extends AppCompatActivity {
             Log.d("ShoppingCart", "Cart items after adding: " + cartItems.toString());
         }
 
+        // Notify the adapter
         if (cartAdapter != null) {
-            // Add a log statement to check if notifyDataSetChanged is called
-            Log.d("ShoppingCart", "Adapter notified of data change");
             cartAdapter.notifyDataSetChanged();
+            Log.d("ShoppingCart", "Adapter notified of data change");
         }
     }
-
 
     private void scanCode() {
         ScanOptions options = new ScanOptions();
@@ -76,17 +86,15 @@ public class ShoppingCart extends AppCompatActivity {
         options.setCaptureActivity(CaptureACt.class);
         barlauncher.launch(options);
     }
-    ActivityResultLauncher<ScanOptions> barlauncher = registerForActivityResult(new ScanContract(), result ->{
-        if(result.getContents() !=null){
+
+    // ... Other methods in your ShoppingCart activity
+
+    ActivityResultLauncher<ScanOptions> barlauncher = registerForActivityResult(new ScanContract(), result -> {
+        if (result.getContents() != null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCart.this);
             builder.setTitle("Result");
             builder.setMessage(result.getContents());
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            }).show();
+            builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
         }
     });
 }
